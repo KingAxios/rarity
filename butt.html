@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Rare is She?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a2e;
+            color: #eaeaea;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #64ffda;
+            margin: 20px 0;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .box {
+            background-color: #2a2a3e;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .slider-container label, .hair-container label {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .slider {
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 8px;
+            border-radius: 5px;
+            background: #333;
+            outline: none;
+            transition: background 0.3s;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #64ffda;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #64ffda;
+            cursor: pointer;
+        }
+        .rarity-display {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #ff6b6b;
+        }
+        .final-result {
+            margin-top: 30px;
+            font-size: 1.8rem;
+            color: #f1c40f;
+        }
+        .calculate-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: #000000;
+            background-color: #2596be;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .calculate-btn:hover {
+            background-color: #52e2c4;
+        }
+    </style>
+</head>
+<body>
+    <h1>How Rare is She?</h1>
+
+    <div class="container">
+        <!-- Box 1: Attractiveness -->
+        <div class="box">
+            <div class="slider-container">
+                <label for="attractiveness-slider">Choose Attractiveness Rating:</label>
+                <input type="range" id="attractiveness-slider" class="slider" min="1" max="40" step="1" value="20">
+                <div class="rating-display">Rating: <span id="rating-value">5.0</span></div>
+                <div class="rarity-display">Percent: <span id="rating-percent">49.26%</span></div>
+            </div>
+        </div>
+
+        <!-- Box 2: Age Range -->
+        <div class="box">
+            <div class="slider-container">
+                <label for="age-slider">Choose Age Range:</label>
+                <input type="range" id="age-slider-min" class="slider" min="13" max="60" step="1" value="20">
+                <input type="range" id="age-slider-max" class="slider" min="13" max="60" step="1" value="30">
+                <div class="rarity-display">Age Range: <span id="age-range">20 years old to 30 years old</span></div>
+                <div class="rarity-display">Covers <span id="age-percentage">0.0%</span></div>
+            </div>
+        </div>
+
+        <!-- Box 3: Race Selection -->
+        <div class="box">
+            <div class="race-container">
+                <label>Select Race(s):</label>
+                <div><input type="checkbox" class="race-checkbox" value="15"> White (15%)</div>
+                <div><input type="checkbox" class="race-checkbox" value="14"> Black (14%)</div>
+                <div><input type="checkbox" class="race-checkbox" value="60"> Asian (60%)</div>
+                <div><input type="checkbox" class="race-checkbox" value="8"> Latina (8%)</div>
+                <div><input type="checkbox" class="race-checkbox" value="3"> Arab (3%)</div>
+                <div class="rarity-display">Total: <span id="race-percentage">0%</span></div>
+            </div>
+        </div>
+
+        <!-- Box 4: Hair Color Selection -->
+        <div class="box">
+            <div class="hair-container">
+                <label>Select Hair Color(s):</label>
+                <div><input type="checkbox" class="hair-checkbox" value="1.5"> Red Hair (1.5%)</div>
+                <div><input type="checkbox" class="hair-checkbox" value="2.5"> Blonde Hair (2.5%)</div>
+                <div><input type="checkbox" class="hair-checkbox" value="23"> Brown Hair (23%)</div>
+                <div><input type="checkbox" class="hair-checkbox" value="73"> Black Hair (73%)</div>
+                <div class="rarity-display">Total: <span id="hair-percentage">0%</span></div>
+            </div>
+        </div>
+
+        <!-- Box 5: Height Range -->
+        <div class="box">
+            <div class="slider-container">
+                <label for="height-slider">Choose Height Range (cm):</label>
+                <input type="range" id="height-slider-min" class="slider" min="148" max="184" step="1" value="154">
+                <input type="range" id="height-slider-max" class="slider" min="148" max="184" step="1" value="164">
+                <div class="rarity-display">Height Range: <span id="height-range">154 cm to 164 cm</span></div>
+                <div class="rarity-display">Covers <span id="height-percentage">0.0%</span> of all women</div>
+            </div>
+        </div>
+
+        <!-- Calculate Button -->
+        <button class="calculate-btn" id="calculate-btn">Calculate</button>
+
+        <!-- Final Result Display -->
+        <div class="final-result" id="final-result">
+	</div>
+        <div class="box">
+<p>Coming Soon<br> <br> - Location<br> - Weight <br> - Eye Color</p>
+      </ul>
+      <h2>My Links</h2>
+<p>
+        <a href="https://murtazafun.vercel.app/" target="_blank" style="color: #7FFF00; text-decoration: none; font-weight: bold;">
+	Home Page
+	</a>
+</p>
+        <a href="https://www.youtube.com/@murtazatruth" target="_blank" style="color: #7FFF00; text-decoration: none; font-weight: bold;">
+	YouTube
+	</a>
+      </ul>
+            </div>
+    </div>
+
+    <script>
+    const slider = document.getElementById('attractiveness-slider');
+    const ratingValue = document.getElementById('rating-value');
+    const ratingPercent = document.getElementById('rating-percent');
+
+    const percents = [
+        100.00000, 99.99998, 99.99992, 99.9996, 99.99826, 99.99319, 99.976, 99.922, 99.77, 99.39,
+        98.54, 96.8, 93.66, 88.61, 81.45, 72.58, 63.25, 55.32, 50.74, 49.26,
+        44.68, 36.75, 27.42, 18.55, 8.10, 3.70, 2.03, 1.46, 0.61, 0.12,
+        0.08, 0.02, 0.0068100, 0.0005400, 0.0001589, 0.0000841, 0.0000160, 0.0000028, 0.0000004, 0.0000001
+    ];
+
+    slider.addEventListener('input', () => {
+        const index = slider.value - 1;
+        ratingValue.textContent = (index + 1) / 4; // Convert index to rating (e.g., 20 -> 5.0)
+        ratingPercent.textContent = `${percents[index].toFixed(5)}%`; // Display the percent for the rating
+    });
+
+        // Age Range Slider Logic
+        const ageSliderMin = document.getElementById('age-slider-min');
+        const ageSliderMax = document.getElementById('age-slider-max');
+        const ageRangeDisplay = document.getElementById('age-range');
+        const agePercentageDisplay = document.getElementById('age-percentage');
+
+        const agePercentages = [
+            1.6, 1.6, 1.6, 1.6, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5,
+            1.5, 1.5, 1.5, 1.5, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.3,
+            1.3, 1.3, 1.3, 1.2, 1.2, 1.2, 1.2, 1.2, 1.1, 1.1, 1.1,
+            1.1, 1.1, 1.0, 1.0, 1.0, 1.0, 1.0, 0.9, 0.9, 0.9, 0.9,
+            0.9, 0.9, 0.8
+        ];
+
+        function updateAgeRange() {
+            const minAge = parseInt(ageSliderMin.value);
+            const maxAge = parseInt(ageSliderMax.value);
+            if (minAge > maxAge) {
+                ageSliderMin.value = maxAge;
+                ageSliderMax.value = minAge;
+            }
+
+            const newMinAge = parseInt(ageSliderMin.value);
+            const newMaxAge = parseInt(ageSliderMax.value);
+
+            ageRangeDisplay.textContent = `${newMinAge} years old to ${newMaxAge} years old`;
+
+            const totalPercentage = agePercentages.slice(newMinAge - 13, newMaxAge - 12).reduce((a, b) => a + b, 0);
+            agePercentageDisplay.textContent = `${totalPercentage.toFixed(2)}% of all women`;
+        }
+
+        ageSliderMin.addEventListener('input', updateAgeRange);
+        ageSliderMax.addEventListener('input', updateAgeRange);
+
+        updateAgeRange();
+
+        // Race Checkbox Logic
+        const raceCheckboxes = document.querySelectorAll('.race-checkbox');
+        const racePercentageDisplay = document.getElementById('race-percentage');
+
+        function updateRacePercentage() {
+            let totalPercentage = 0;
+            let selectedCount = 0;
+
+            raceCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    totalPercentage += parseFloat(checkbox.value);
+                    selectedCount++;
+                }
+            });
+
+            if (selectedCount === 0) {
+                raceCheckboxes[0].checked = true; // Default to the first option
+                totalPercentage = parseFloat(raceCheckboxes[0].value);
+            }
+
+            racePercentageDisplay.textContent = `${totalPercentage}%`;
+        }
+
+        raceCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateRacePercentage);
+        });
+
+        updateRacePercentage();
+
+        // Hair Color Checkbox Logic
+        const hairCheckboxes = document.querySelectorAll('.hair-checkbox');
+        const hairPercentageDisplay = document.getElementById('hair-percentage');
+
+        function updateHairPercentage() {
+            let totalPercentage = 0;
+            let selectedCount = 0;
+
+            hairCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    totalPercentage += parseFloat(checkbox.value);
+                    selectedCount++;
+                }
+            });
+
+            if (selectedCount === 0) {
+                hairCheckboxes[0].checked = true; // Default to the first option
+                totalPercentage = parseFloat(hairCheckboxes[0].value);
+            }
+
+            hairPercentageDisplay.textContent = `${totalPercentage.toFixed(2)}%`;
+        }
+
+        hairCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateHairPercentage);
+        });
+
+        updateHairPercentage();
+
+        // Height Range Slider Logic
+        const heightSliderMin = document.getElementById('height-slider-min');
+        const heightSliderMax = document.getElementById('height-slider-max');
+        const heightRangeDisplay = document.getElementById('height-range');
+        const heightPercentageDisplay = document.getElementById('height-percentage');
+
+        const heightData = [
+            { height: 148, rarity: 0.76 },
+            { height: 149, rarity: 0.91 },
+            { height: 150, rarity: 1.14 },
+            { height: 151, rarity: 1.52 },
+            { height: 152, rarity: 2.27 },
+            { height: 153, rarity: 3.03 },
+            { height: 154, rarity: 3.79 },
+            { height: 155, rarity: 4.55 },
+            { height: 156, rarity: 5.30 },
+            { height: 157, rarity: 6.06 },
+            { height: 158, rarity: 6.82 },
+            { height: 159, rarity: 7.58 },
+            { height: 160, rarity: 7.58 },
+            { height: 161, rarity: 7.58 },
+            { height: 162, rarity: 6.82 },
+            { height: 163, rarity: 6.06 },
+            { height: 164, rarity: 5.30 },
+            { height: 165, rarity: 4.55 },
+            { height: 166, rarity: 3.79 },
+            { height: 167, rarity: 3.03 },
+            { height: 168, rarity: 2.27 },
+            { height: 169, rarity: 1.89 },
+            { height: 170, rarity: 1.52 },
+            { height: 171, rarity: 1.14 },
+            { height: 172, rarity: 0.91 },
+            { height: 173, rarity: 0.76 },
+            { height: 174, rarity: 0.61 },
+            { height: 175, rarity: 0.45 },
+            { height: 176, rarity: 0.38 },
+            { height: 177, rarity: 0.30 },
+            { height: 178, rarity: 0.23 },
+            { height: 179, rarity: 0.15 },
+            { height: 180, rarity: 0.08 },
+            { height: 181, rarity: 0.08 },
+            { height: 182, rarity: 0.04 },
+            { height: 183, rarity: 0.04 },
+            { height: 184, rarity: 0.04 }
+        ];
+
+        function updateHeightRange() {
+            const minHeight = parseInt(heightSliderMin.value);
+            const maxHeight = parseInt(heightSliderMax.value);
+            if (minHeight > maxHeight) {
+                heightSliderMin.value = maxHeight;
+                heightSliderMax.value = minHeight;
+            }
+
+            const newMinHeight = parseInt(heightSliderMin.value);
+            const newMaxHeight = parseInt(heightSliderMax.value);
+
+            heightRangeDisplay.textContent = `${newMinHeight} cm to ${newMaxHeight} cm`;
+
+            const totalPercentage = heightData
+                .filter(h => h.height >= newMinHeight && h.height <= newMaxHeight)
+                .reduce((sum, h) => sum + h.rarity, 0);
+
+            heightPercentageDisplay.textContent = `${totalPercentage.toFixed(2)}%`;
+        }
+
+        heightSliderMin.addEventListener('input', updateHeightRange);
+        heightSliderMax.addEventListener('input', updateHeightRange);
+
+        updateHeightRange();
+
+        const calculateButton = document.getElementById('calculate-btn');
+        const finalResultDisplay = document.getElementById('final-result');
+
+calculateButton.addEventListener('click', () => {
+    const ratingPercent = parseFloat(document.getElementById('rating-percent').textContent.replace('%', '')) / 100;
+    const agePercent = parseFloat(document.getElementById('age-percentage').textContent.replace('%', '')) / 100;
+    const racePercent = parseFloat(document.getElementById('race-percentage').textContent.replace('%', '')) / 100;
+    const hairPercent = parseFloat(document.getElementById('hair-percentage').textContent.replace('%', '')) / 100;
+    const heightPercent = parseFloat(document.getElementById('height-percentage').textContent.replace('%', '')) / 100;
+
+    // Calculate final percentage
+    const finalPercent = ratingPercent * agePercent * racePercent * hairPercent * heightPercent;
+
+    // Total number of females in the population
+    const totalFemales = 4.1e9;
+
+    // Calculate the count and "1 in X"
+    const count = totalFemales * finalPercent;
+    const oneInX = totalFemales / count;
+
+    // Display results
+    finalResultDisplay.innerHTML = `Your Dream Girl is ${(finalPercent * 100).toFixed(5)}% of all Women.<br>
+    This corresponds to approximately ${Math.round(count).toLocaleString()} women worldwide.<br>
+    Your Dream Girl is 1 in ${oneInX.toFixed(0)} women.`;
+});
+
+    </script>
+</body>
+</html>
